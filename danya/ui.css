@@ -1,0 +1,54 @@
+/* danya · Typora 界面
+   侧边栏、搜索面板、状态栏、弹窗按钮、通知条。都是屏幕 UI、不进导出，
+   尺寸保持绝对 px 是刻意的：界面不该跟正文字号一起缩。 */
+
+#typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+  font-size: .92rem;
+  box-shadow: none;
+}
+
+.file-list-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.typora-sidebar-header {
+  color: var(--control-text-color);
+}
+
+#md-searchpanel {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+#md-searchpanel input {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+#md-searchpanel input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+footer.footer-item,
+#footer-word-count {
+  color: var(--control-text-color);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+  color: #fff;
+}
+
+#md-notification {
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+}

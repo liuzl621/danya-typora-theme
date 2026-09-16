@@ -1,0 +1,91 @@
+/* danya · 表格
+   默认论文三线表：顶线/栏目线/底线三条横线，无竖线无底色，整体居中、单元格居中。
+   无底色是关键——放进引用、提示栏都不会遮出白洞。变量见 variables.css 第 10 节。 */
+
+#write table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+  max-width: 100%;
+  margin: 1.4em auto;
+  font-size: .95em;
+}
+
+#write th,
+#write td {
+  border: none;
+  padding: var(--table-padding);
+  text-align: center;                         /* 单列想左/右对齐用 markdown 的 :--- 或 ---: */
+}
+
+/* 顶线 + 栏目线。栏目线在屏幕上用 border 画：border 走布局进位，1px 永远 crisp；
+   绝对定位色带的 y 落在非整数设备像素时会被抗锯齿涂成两行、看着和 2px 一样粗 */
+#write thead th {
+  position: relative;
+  border-top: var(--table-rule-wide) solid var(--table-rule);
+  border-bottom: var(--table-rule-thin) solid var(--table-rule);
+  color: var(--table-head-text);
+  font-weight: 600;
+}
+
+#write tbody tr:last-child td {
+  border-bottom: var(--table-rule-wide) solid var(--table-rule);
+}
+
+/* 导出 PDF：border 宽度会被进位到整数设备像素（下限 1pt），1px 中线会和 2px 外线同粗。
+   所以打印时关掉 border、改用色带 + 绘制期 scaleY(.5)——变换不走进位，得到真 0.5pt */
+@media print {
+  #write thead th {
+    border-bottom: none;
+  }
+  #write thead th::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--table-rule-wide);
+    transform: scaleY(.5);
+    transform-origin: center bottom;
+    background: var(--table-rule);
+  }
+}
+
+#write tbody tr:hover {
+  background: var(--table-hover);
+}
+
+#write th code,
+#write td code {
+  background: transparent;
+  padding: 0 .2em;
+}
+
+
+/* 备选：网格表（全边框 + 表头底 + 斑马纹 + 撑满左对齐）。
+   注意表头底和斑马纹是不透明底色，放进半透明引用里会遮出白洞 */
+/*
+#write table {
+  width: 100%;
+  margin: 1.2em 0;
+}
+#write th,
+#write td {
+  border: .0625rem solid var(--table-border);
+  text-align: left;
+}
+#write thead th {
+  border-top: none;
+  border-bottom: .0625rem solid var(--table-border);
+  background: var(--table-head-bg);
+}
+#write thead th::after {
+  content: none;                              关掉三线表的栏目线色带
+}
+#write tbody tr:nth-child(2n) {
+  background: var(--table-stripe);
+}
+#write tbody tr:last-child td {
+  border-bottom: .0625rem solid var(--table-border);
+}
+*/

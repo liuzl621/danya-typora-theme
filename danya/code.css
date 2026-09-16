@@ -1,0 +1,121 @@
+/* danya · 代码块与行内代码
+   变量见 variables.css 第 8 节；语法着色在 codemirror.css。 */
+
+#write code,
+#write tt {
+  font-family: var(--font-code);
+  font-size: .88em;
+  background: var(--inline-code-bg);
+  color: var(--inline-code-color);
+  padding: .12em .4em;
+  border-radius: var(--inline-code-radius);
+}
+
+#write pre.md-fences,
+pre.md-fences {
+  font-family: var(--font-code);
+  font-size: var(--fence-font-size);
+  line-height: var(--fence-line-height);
+  color: var(--fence-text);
+  background: var(--fence-bg);
+  border: .0625rem solid var(--fence-border);
+  border-radius: var(--fence-radius);
+  padding: var(--fence-padding);
+  margin: 1.2em 0;
+}
+
+/* 头部：左上三圆点 + 语言标注。
+   语言取自 pre.md-fences 的 lang 属性（Typora 自己写的）；没写语言时兜底 text。
+   标注的 left 用自身字号（.78em）的 em，比代码块字号小，别按代码块 em 心算位置 */
+#write pre.md-fences {
+  position: relative;
+  padding-top: 2.4em;
+}
+#write pre.md-fences::before {
+  content: "";
+  position: absolute;
+  top: .95em;
+  left: 1.2em;
+  width: .62em;
+  height: .62em;
+  border-radius: 50%;
+  background: var(--fence-dot-1);
+  box-shadow: 1.05em 0 0 var(--fence-dot-2), 2.1em 0 0 var(--fence-dot-3);
+}
+#write pre.md-fences::after {
+  content: "text";
+  position: absolute;
+  top: .72em;
+  left: 5.8em;
+  font-family: var(--font-code);
+  font-size: .78em;
+  letter-spacing: .04em;
+  color: var(--fence-lang-color);
+}
+#write pre.md-fences[lang]::after {
+  content: attr(lang);
+}
+
+/* Typora 自带语言框 .code-tooltip：它用内联坐标把自己钉在代码内容末尾（长代码要滚到底
+   才看见），内联 style 优先级最高，所以四边 offset 必须 !important 才能钉回右下角。
+   隐藏时 pointer-events: none 防误点；input 保留，点击仍可改语言 */
+#write pre.md-fences .code-tooltip {
+  position: absolute;
+  left: auto !important;
+  top: auto !important;
+  right: .6em !important;
+  bottom: .45em !important;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  border: .0625rem solid var(--fence-tip-border);
+  border-radius: .25rem;
+  background: var(--fence-tip-bg);
+  color: var(--fence-tip-text);
+  box-shadow: none;
+  font-family: var(--font-code);
+  font-size: .75em;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s;
+}
+#write pre.md-fences:hover .code-tooltip,
+#write pre.md-fences.md-focus .code-tooltip,
+#write pre.md-fences .code-tooltip:focus-within {
+  opacity: 1;
+  pointer-events: auto;
+}
+#write pre.md-fences .code-tooltip input,
+#write pre.md-fences .code-tooltip span {
+  margin: 0;
+  padding: .12em .5em;
+  border: none;
+  border-radius: .25rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.md-fences .CodeMirror,
+.cm-s-inner.CodeMirror {
+  background: transparent;
+  color: var(--fence-text);
+  font-family: var(--font-code);
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid var(--color-accent);
+}
+
+.CodeMirror-gutters {
+  background: transparent;
+  border-right: .0625rem solid var(--fence-border);
+}
+.CodeMirror-linenumber {
+  color: var(--gutter-color);
+}
+
+.md-fences {
+  overflow-x: auto;                           /* 长行横向滚动；想自动换行改 pre-wrap */
+}

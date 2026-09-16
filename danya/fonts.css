@@ -1,0 +1,52 @@
+/* danya · 自定义字体
+   默认不启用任何 @font-face：variables.css 里直接写系统字体名就够用。
+   想把字体随主题分发时，把文件放进 danya/fonts/，取消下面对应模板的注释，
+   再到 variables.css 把字体名加到栈里。url() 相对本文件，路径前缀 fonts/。 */
+
+/* 启用中：Times New Roman 视觉补偿。
+   Times 的 x-height 偏小，和占满 1em 的中文混排时西文看着小一号；
+   用 local() 引用系统已装 Times 再 size-adjust 放大度量，只影响西文/数字。
+   local() 不复制不分发字体文件，不涉及授权。觉得还小调 115%，偏大调 105% */
+@font-face {
+  font-family: "Danya Times";
+  src: local("Times New Roman");
+  size-adjust: 110%;
+  font-display: swap;
+}
+
+/* 模板：中文字体（思源宋体）
+@font-face {
+  font-family: "Source Han Serif SC";
+  src: url("fonts/SourceHanSerifSC-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* 模板：等宽字体（Maple Mono NF CN）
+@font-face {
+  font-family: "Maple Mono NF CN";
+  src: url("fonts/MapleMono-NF-CN-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* 模板：西文字体（Inter，Regular + Bold）
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/

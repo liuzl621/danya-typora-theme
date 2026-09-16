@@ -1,0 +1,83 @@
+/* danya · 标题
+   纯字号分层：六级同色同字重同字体，h1 居中带细线，h2-h6 左对齐无装饰。
+   线宽用 rem，导出时随根字号等比缩。想换装饰风见文件末尾备选。 */
+
+#write h1, #write h2, #write h3,
+#write h4, #write h5, #write h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--heading-letter-spacing);
+  line-height: 1.4;
+}
+
+/* 文档开头第一个标题不顶大块空白 */
+#write > h1:first-child, #write > h2:first-child, #write > h3:first-child,
+#write > h4:first-child, #write > h5:first-child, #write > h6:first-child {
+  margin-top: .5em;
+}
+
+#write h1 {
+  font-size: var(--h1-size);
+  margin: var(--h1-margin);
+  text-align: center;
+  padding-bottom: .3em;
+  border-bottom: .0625rem solid var(--h1-line-color);
+}
+
+#write h2 { font-size: var(--h2-size); margin: var(--h2-margin); }
+#write h3 { font-size: var(--h3-size); margin: var(--h3-margin); }
+#write h4 { font-size: var(--h4-size); margin: var(--h4-margin); }
+#write h5 { font-size: var(--h5-size); margin: var(--h5-margin); }
+#write h6 { font-size: var(--h6-size); margin: var(--h6-margin); }
+
+
+/* 备选装饰风：取消注释即覆盖上面的默认写法，可只取一两条 */
+
+/* h1 左对齐
+#write h1 { text-align: left; }
+*/
+
+/* h1 粗横线
+#write h1 { border-bottom: .125rem solid var(--color-accent); }
+*/
+
+/* h1 居中短线（需删掉上面的 border-bottom 与 padding-bottom）
+#write h1::after {
+  content: "";
+  display: block;
+  width: 6em;
+  margin: .3em auto 0;
+  border-bottom: .125rem solid var(--h1-line-color);
+}
+*/
+
+/* h2 左竖条（与引用栏同款，容易撞脸）
+#write h2 {
+  border-left: .25rem solid var(--h2-bar-color);
+  padding-left: .55em;
+}
+*/
+
+/* h2 底部虚线
+#write h2 {
+  border-bottom: .0625rem dashed var(--color-border);
+  padding-bottom: .25em;
+}
+*/
+
+/* h3 强调色
+#write h3 { color: var(--h3-color); }
+*/
+
+/* h3 前置斜杠
+#write h3::before {
+  content: "/ ";
+  color: var(--color-accent);
+  font-weight: 700;
+}
+*/
+
+/* h6 弱化次要色
+#write h6 { color: var(--color-text-secondary); }
+*/

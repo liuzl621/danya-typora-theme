@@ -1,0 +1,114 @@
+/* danya · 公式
+   行内 $...$、块级 $$...$$。渲染由 Typora 内置引擎负责，这里只调字号/间距/外框，
+   不碰内部结构。变量见 variables.css 第 11 节。 */
+
+.katex {
+  font-size: var(--math-size);
+}
+
+/* 公式里的中文接回宋体：KaTeX/MathJax 自带字体没有 CJK 字形，不显式给回退链
+   就会掉到系统默认字体。数学符号仍由引擎按字形类渲染，特异性更高、不受影响 */
+#write .katex,
+#write mjx-container {
+  font-family: var(--font-math);
+}
+
+/* MathJax 把公式中文渲染成 mjx-utext，并用内联 style 写死 font-family；
+   内联优先级最高，只能 !important 覆盖 */
+#write mjx-utext {
+  font-family: var(--font-math) !important;
+}
+
+/* 块级公式悬停淡染，与表格行悬停同族；覆盖 KaTeX 与 MathJax 两种容器 */
+#write .md-math-block,
+#write .mathjax-block {
+  border-radius: .375rem;
+  transition: background-color .15s;
+}
+#write .md-math-block:hover,
+#write .mathjax-block:hover {
+  background: var(--math-hover-bg);
+}
+
+#write .md-math-block .md-rawblock-container {
+  padding: var(--math-block-padding);
+  margin: .2em 0;
+  background: var(--math-card-bg);
+  border-radius: var(--math-card-radius);
+}
+#write .md-math-block .katex-display {
+  margin: .3em 0;
+}
+
+/* 备选：公式卡片（带边框内边距）
+#write .md-math-block .md-rawblock-container {
+  background: var(--fence-bg);
+  border: .0625rem solid var(--fence-border);
+  border-radius: var(--fence-radius);
+  padding: 1em 1.2em;
+  margin: .8em 0;
+}
+*/
+
+/* \tag 定位：块公式及其容器不可被长公式撑宽，tag 钉在正文右边界 */
+#write .md-math-block,
+#write .md-math-block .md-rawblock-container,
+#write .md-math-block .katex-display,
+#write .md-math-block .katex-display > .katex,
+#write .md-math-block .katex-display > .katex > .katex-html {
+  display: block !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+#write {
+  position: relative;
+}
+
+#write .md-math-block,
+#write .md-math-block .md-rawblock-container,
+#write .md-math-block .katex-display > .katex,
+#write .md-math-block .katex-display > .katex > .katex-html {
+  position: static;
+}
+
+#write .md-math-block .katex-display {
+  position: static;
+}
+
+#write .md-math-block .katex-display .tag {
+  position: absolute !important;
+  right: 0 !important;
+  left: auto !important;
+  margin-left: 0 !important;
+}
+
+/* Typora 实际用 MathJax 渲染块公式；CHTML 默认允许长公式按最小内容宽度撑开，
+   会让 tag 越过版心，这里强制容器可收缩 */
+#write .mathjax-block,
+#write .mathjax-block .md-rawblock-container,
+#write .mathjax-block .md-math-container,
+#write .mathjax-block mjx-container[display="true"] {
+  display: block !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+#write .mathjax-block .md-rawblock-container,
+#write .mathjax-block .md-math-container {
+  position: static !important;
+}
+
+#write .mathjax-block mjx-container[display="true"] > mjx-math,
+#write .mathjax-block mjx-container[display="true"] .mjx-chtml {
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+#write .md-inline-math {
+  color: inherit;
+}

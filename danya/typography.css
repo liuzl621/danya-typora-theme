@@ -1,0 +1,105 @@
+/* danya · 正文与行内元素
+   链接、加粗、高亮、按键、列表、任务列表、脚注、分割线、YAML 头。 */
+
+#write a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: .0625rem solid var(--link-underline);
+  transition: color .2s, border-color .2s;
+  word-break: break-word;
+}
+#write a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+#write strong {
+  font-weight: 600;
+  color: var(--strong-color);
+}
+#write del {
+  color: var(--color-text-secondary);
+}
+
+#write mark {
+  background: var(--mark-bg);
+  color: inherit;
+  padding: .08em .25em;
+  border-radius: .1875rem;
+}
+
+#write kbd {
+  font-family: var(--font-code);
+  font-size: .85em;
+  background: var(--kbd-bg);
+  border: .0625rem solid var(--kbd-border);
+  border-bottom-width: .125rem;
+  border-radius: .25rem;
+  padding: .1em .45em;
+}
+
+#write ul li,
+#write ol li {
+  margin: var(--li-margin) 0;
+}
+#write ul li::marker {
+  color: var(--list-marker-color);
+}
+#write ol li::marker {
+  color: var(--list-marker-color);
+  font-weight: 600;
+}
+
+/* 任务列表复选框：原生 checkbox 是固定尺寸控件、不随字号缩放，导出时会显得巨大。
+   先继承字号再按 em 定尺寸，它才会跟正文一起缩；margin-right 留出与文字的间隙 */
+#write .md-task-list-item > input {
+  accent-color: var(--color-accent);
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  margin-right: .45em;
+  vertical-align: -.12em;
+}
+
+#write sup.md-footnote {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  border-radius: .1875rem;
+  padding: 0 .3em;
+}
+.footnotes {
+  font-size: .9em;
+  color: var(--color-text-secondary);
+  border-top: .0625rem solid var(--color-border);
+  margin-top: 2.5em;
+  padding-top: 1em;
+}
+
+#write hr {
+  border: none;
+  height: .125rem;
+  width: 92%;
+  margin: 2.2em auto;
+  background: linear-gradient(to right, transparent, var(--hr-color), transparent);
+}
+
+/* 备选：居中短线
+#write hr {
+  border: none;
+  width: 3.75rem;
+  height: .1875rem;
+  border-radius: .125rem;
+  margin: 2.5em auto;
+  background: var(--color-accent);
+}
+*/
+
+.md-meta-block {
+  font-family: var(--font-code);
+  font-size: .85em;
+  color: var(--color-text-secondary);
+  background: var(--fence-bg);
+  border-radius: .5rem;
+  padding: .8em 1.2em;
+  margin-bottom: 1.5em;
+}

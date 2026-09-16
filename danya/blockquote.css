@@ -1,0 +1,70 @@
+/* danya · 引用与提示栏
+   普通引用（>）走 --quote-*；GitHub 提示栏（> [!NOTE] 等，Typora ≥ 1.8 且
+   偏好设置里勾选 GitHub Style Alert）走 --alert-*。 */
+
+#write blockquote {
+  margin: 1.1em 0;
+  padding: .75em 1.1em;
+  background: var(--quote-bg);
+  border-left: var(--quote-bar-width) solid var(--quote-border);
+  border-radius: 0 .5rem .5rem 0;
+  color: var(--quote-text);
+}
+#write blockquote p {
+  margin: .35em 0;
+}
+/* 嵌套靠半透明底色自动叠加加深；别加 opacity，那会连文字一起淡化 */
+#write blockquote blockquote {
+  margin: .5em 0;
+}
+
+.md-alert {
+  border-left-width: var(--quote-bar-width);
+  border-left-style: solid;
+}
+.md-alert p {
+  margin: .35em 0;
+}
+.md-alert .md-alert-text {
+  font-weight: 600;
+}
+
+.md-alert.md-alert-note {
+  border-left-color: var(--alert-note);
+  background: var(--alert-note-bg);
+}
+.md-alert-text-note {
+  color: var(--alert-note);
+}
+
+.md-alert.md-alert-tip {
+  border-left-color: var(--alert-tip);
+  background: var(--alert-tip-bg);
+}
+.md-alert-text-tip {
+  color: var(--alert-tip);
+}
+
+.md-alert.md-alert-important {
+  border-left-color: var(--alert-important);
+  background: var(--alert-important-bg);
+}
+.md-alert-text-important {
+  color: var(--alert-important);
+}
+
+.md-alert.md-alert-warning {
+  border-left-color: var(--alert-warning);
+  background: var(--alert-warning-bg);
+}
+.md-alert-text-warning {
+  color: var(--alert-warning);
+}
+
+.md-alert.md-alert-caution {
+  border-left-color: var(--alert-caution);
+  background: var(--alert-caution-bg);
+}
+.md-alert-text-caution {
+  color: var(--alert-caution);
+}

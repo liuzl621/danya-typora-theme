@@ -1,0 +1,164 @@
+/* danya · 配置面板
+   想改主题，绝大多数情况只动这个文件。改完保存，回 Typora 重新点一下当前主题即生效。
+   命名约定：--color-* 颜色、--font-* 字体、--*-size / --*-margin 尺寸间距、
+   --cm-* 代码高亮、--alert-* 提示栏。 */
+
+:root {
+  /* 1. 基础颜色。改强调色时 --color-accent / -soft / -selection 三个一起改 */
+  --color-bg: #ffffff;
+  --color-text: #33383d;
+  --color-text-secondary: #86909c;
+  --color-heading: #1f2428;
+  --color-border: #e4e8ec;
+  --color-hover-bg: #eef1f3;
+
+  --color-accent: #2e8b74;                    /* 主题强调色：低饱和青绿 */
+  --color-accent-strong: #24705e;
+  --color-accent-soft: rgba(46, 139, 116, .10);
+  --color-selection: rgba(46, 139, 116, .22);
+
+  /* 2. 字体。论文规范：西文数字 Times、正文中文宋体、标题中文黑体。
+     这里只引用系统已装字体名，不打包字体文件，分发主题不涉及字体授权 */
+  --font-latin: "Danya Times", "Times New Roman";  /* Danya Times = fonts.css 里 local Times + size-adjust 的视觉补偿 */
+  --font-text: var(--font-latin), "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", serif;
+  --font-heading: var(--font-latin), "Noto Sans SC", "Source Han Sans SC", "SimHei", "Microsoft YaHei", sans-serif;
+  --font-code: "Maple Mono NF CN", "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+  --font-math: "KaTeX_Main", "Times New Roman", "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+
+  /* 3. 页面与间距。--print-size-base 只作用于导出 PDF：pt = px × 0.75 */
+  --size-base: 16px;
+  --print-size-base: 10.67px;                 /* 导出正文 = 8pt */
+  --page-width: 1200px;
+  --page-padding-y: 4.5rem;
+  --page-padding-x: 3rem;
+  --line-height: 1.78;
+  --p-margin: .95em;
+  --li-margin: .35em;
+
+  /* 4. 标题。纯字号分层：六级同色同字重同字体，h1 居中带细线，其余左对齐无装饰。
+     六级都大于正文；线宽与圆角用 rem，导出时随根字号等比缩 */
+  --h1-size: 2.05em;
+  --h2-size: 1.75em;
+  --h3-size: 1.50em;
+  --h4-size: 1.30em;
+  --h5-size: 1.14em;
+  --h6-size: 1.04em;
+  --heading-weight: 700;
+  --heading-letter-spacing: .03em;
+  --h1-margin: 1.7em 0 .85em;
+  --h2-margin: 1.8em 0 .7em;
+  --h3-margin: 1.5em 0 .6em;
+  --h4-margin: 1.4em 0 .5em;
+  --h5-margin: 1.25em 0 .45em;
+  --h6-margin: 1.15em 0 .4em;
+  --h1-line-color: rgba(46, 139, 116, .38);   /* 改强调色时同步这行 */
+  --h2-bar-color: var(--color-accent);        /* 仅备选装饰风使用 */
+  --h3-color: var(--color-accent-strong);     /* 仅备选装饰风使用 */
+
+  /* 5. 行内元素 */
+  --link-color: var(--color-accent-strong);
+  --link-underline: rgba(46, 139, 116, .35);
+  --strong-color: var(--color-heading);
+  --mark-bg: #fbf3c6;
+  --kbd-bg: #f2f4f6;
+  --kbd-border: #d5dade;
+  --list-marker-color: var(--color-accent);
+  --hr-color: rgba(46, 139, 116, .45);
+
+  /* 6. 行内代码 */
+  --inline-code-bg: #f0f3f2;
+  --inline-code-color: #b8425e;
+  --inline-code-radius: .25rem;
+
+  /* 7. 引用与提示栏。底色是半透明强调色：嵌套时自动叠加加深，无需逐级配色 */
+  --quote-bg: rgba(46, 139, 116, .065);       /* 改强调色时同步这行 */
+  --quote-border: var(--color-accent);
+  --quote-bar-width: .25rem;
+  --quote-text: #4a5560;
+
+  --alert-note: #2563c4;      --alert-note-bg: #edf3fd;
+  --alert-tip: #1f845a;       --alert-tip-bg: #ecf7f1;
+  --alert-important: #7c4dcf; --alert-important-bg: #f3effc;
+  --alert-warning: #b26a00;   --alert-warning-bg: #fdf3e2;
+  --alert-caution: #cf3f45;   --alert-caution-bg: #fcedee;
+
+  /* 8. 代码块 */
+  --fence-bg: #fafbfc;                        /* 淡卡面：半透明选中底色叠上去才明显 */
+  --fence-text: #33383d;
+  --fence-border: var(--color-border);
+  --fence-radius: .625rem;
+  --fence-padding: 1em 1.2em;
+  --fence-font-size: .92em;
+  --fence-line-height: 1.6;
+  --gutter-color: #b3bac2;
+  --fence-dot-1: #ff5f56;                     /* 左上三圆点：红黄绿 */
+  --fence-dot-2: #ffbd2e;
+  --fence-dot-3: #27c93f;
+  --fence-lang-color: var(--color-text-secondary);
+  --fence-tip-bg: rgba(46, 139, 116, .16);    /* 悬停语言芯片：淡底，深底会吞选区色 */
+  --fence-tip-text: var(--color-accent-strong);
+  --fence-tip-border: rgba(46, 139, 116, .35);
+
+  /* 9. 代码高亮。整套换风格时整组替换 --cm-* */
+  --cm-comment: #6e7781;
+  --cm-keyword: #cf222e;
+  --cm-string: #0a3069;
+  --cm-number: #0550ae;
+  --cm-atom: #0550ae;
+  --cm-func: #8250df;
+  --cm-variable: #24292f;
+  --cm-property: #0550ae;
+  --cm-operator: #57606a;
+  --cm-meta: #953800;
+  --cm-tag: #116329;
+  --cm-attribute: #0550ae;
+  --cm-error: #cf222e;
+  --cm-selection-bg: rgba(84, 158, 235, .45);
+
+  /* 10. 表格。默认三线表：无底色，放进引用/提示栏都不会遮出白洞 */
+  --table-rule: var(--color-text);
+  --table-rule-wide: .125rem;                 /* 顶线/底线 */
+  --table-rule-thin: .0625rem;                /* 栏目线 */
+  --table-head-text: #24292f;
+  --table-hover: rgba(46, 139, 116, .08);
+  --table-padding: .5em .9em;
+  --table-border: #e4e8ec;                    /* 以下三个仅备选网格表使用 */
+  --table-head-bg: #f3f6f8;
+  --table-stripe: #f8fafb;
+
+  /* 11. 公式 */
+  --math-size: 1.06em;
+  --print-math-scale: .8;                     /* 导出时块级公式收紧，防长公式撑爆版心触发整页缩放 */
+  --math-block-padding: .4em 0;
+  --math-tag-gap: 0;
+  --math-card-bg: transparent;
+  --math-card-radius: .5rem;
+  --math-hover-bg: rgba(46, 139, 116, .08);
+
+  /* 12. 图片 */
+  --img-radius: .375rem;
+  --img-shadow: none;
+
+  /* 13. Typora 界面 */
+  --color-bg-sidebar: #f7f8f9;
+  --scrollbar-color: #c9d0d6;
+  --scrollbar-hover: #aeb7bf;
+
+  /* 14. Typora 官方约定变量，映射到上面的值，一般不动 */
+  --bg-color: var(--color-bg);
+  --side-bar-bg-color: var(--color-bg-sidebar);
+  --control-text-color: var(--color-text-secondary);
+  --select-text-bg-color: var(--color-selection);
+  --active-file-bg-color: var(--color-accent-soft);
+  --active-file-text-color: var(--color-accent-strong);
+  --item-hover-bg-color: var(--color-hover-bg);
+  --item-hover-text-color: var(--color-text);
+  --meta-content-color: var(--color-text-secondary);
+  --monospace: var(--font-code);
+
+  /* 15. 目录 */
+  --toc-bg: rgba(46, 139, 116, .045);
+  --toc-border: rgba(46, 139, 116, .22);
+  --toc-radius: .5rem;
+  --toc-padding: .9em 1.3em;
+}

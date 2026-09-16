@@ -1,0 +1,43 @@
+/* danya · 目录
+   [TOC] 生成的目录，默认卡片：淡强调色底 + 一圈淡边框 + 圆角。
+   变量见 variables.css 第 15 节。 */
+
+#write .md-toc {
+  margin: 1.5em 0;
+  font-size: .95em;
+  background: var(--toc-bg);
+  border: .0625rem solid var(--toc-border);
+  border-radius: var(--toc-radius);
+  padding: var(--toc-padding);
+}
+
+#write .md-toc-item {
+  margin: .3em 0;
+}
+
+#write .md-toc-item a {
+  color: var(--color-text);
+  border-bottom: none;
+  text-decoration: none;
+}
+#write .md-toc-item a:hover {
+  color: var(--color-accent);
+}
+
+#write .md-toc-item::before {
+  color: var(--color-text-secondary);
+}
+
+/* 备选：左竖条式（与引用栏同款）
+#write .md-toc {
+  border: none;
+  border-left: .1875rem solid var(--quote-border);
+  border-radius: 0 .5rem .5rem 0;
+}
+*/
+
+/* 备选：无框纯底色
+#write .md-toc {
+  border: none;
+}
+*/

@@ -1,0 +1,72 @@
+/* danya · 页面基础
+   版心、留白、行距、选中色、滚动条；导出排版在底部 @media print。 */
+
+html {
+  font-size: var(--size-base);
+}
+
+body {
+  font-family: var(--font-text);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#write {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--page-padding-y) var(--page-padding-x);
+  line-height: var(--line-height);
+  color: var(--color-text);
+}
+
+#write p {
+  margin: var(--p-margin) 0;
+  text-align: justify;                        /* 中文两端对齐；不习惯改 left */
+}
+
+::selection {
+  background: var(--color-selection);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 窄窗口收缩左右留白，保证可读宽度 */
+@media (max-width: 1200px) {
+  #write {
+    padding: var(--page-padding-y) 2.5rem;
+  }
+}
+
+/* 导出 PDF：密度独立于屏幕，改 --print-size-base 即整体等比缩放（全站字号行距都是 em/rem） */
+@media print {
+  html {
+    font-size: var(--print-size-base);
+  }
+  #write {
+    max-width: 100%;
+    padding: 0;
+  }
+  #write h1, #write h2, #write h3, #write h4 {
+    page-break-after: avoid;
+  }
+  #write pre,
+  #write blockquote,
+  #write table,
+  #write .md-math-block {
+    page-break-inside: avoid;
+  }
+}

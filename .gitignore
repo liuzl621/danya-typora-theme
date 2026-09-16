@@ -1,0 +1,11 @@
+# 构建产物
+dist/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# 编辑器
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,17 @@
+/* danya · 亮色入口
+   只负责按顺序拼装 danya/ 下的模块：改样式进对应模块，改配色改 danya/variables.css。
+   顺序有意义——变量最先加载，ui / table 靠后以便覆盖基础样式。 */
+
+@import "danya/variables.css";
+@import "danya/fonts.css";
+@import "danya/base.css";
+@import "danya/headings.css";
+@import "danya/typography.css";
+@import "danya/blockquote.css";
+@import "danya/code.css";
+@import "danya/codemirror.css";
+@import "danya/table.css";
+@import "danya/math.css";
+@import "danya/image.css";
+@import "danya/toc.css";
+@import "danya/ui.css";

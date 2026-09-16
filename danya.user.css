@@ -1,0 +1,24 @@
+/* danya · 个人微调层
+   Typora 会自动加载与主题同名的 .user.css，且排在主题之后，所以这里的规则优先级最高。
+   适合放不想动主题源码的临时试验；重新覆盖安装主题不会冲掉这个文件。 */
+
+/* 例：换强调色（三个一起换，rgba 是同色的透明版）
+:root {
+  --color-accent: #e67e22;
+  --color-accent-strong: #c96518;
+  --color-accent-soft: rgba(230, 126, 34, .12);
+  --color-selection: rgba(230, 126, 34, .25);
+}
+*/
+
+/* 例：标题改回装饰风（默认是纯字号分层、h1 居中）
+#write h1 { text-align: left; border-bottom: .125rem solid var(--color-accent); }
+#write h2 { border-left: .25rem solid var(--h2-bar-color); padding-left: .55em; }
+#write h3 { color: var(--h3-color); }
+*/
+
+/* 例：正文换黑体屏读风
+:root {
+  --font-text: var(--font-latin), "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+*/
