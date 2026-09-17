@@ -56,8 +56,9 @@
   --h3-color: var(--color-accent-strong);     /* 仅备选装饰风使用 */
 
   /* 5. 行内元素 */
-  --link-color: var(--color-accent-strong);
-  --link-underline: rgba(46, 139, 116, .35);
+  --link-color: #2563c4;                      /* 链接/锚点蓝：跳转一律蓝，与强调色脱钩 */
+  --link-hover: #1e40af;                      /* 悬停加深 */
+  --link-underline: rgba(37, 99, 196, .35);   /* 同色透明下划线，改链接色时同步 */
   --strong-color: var(--color-heading);
   --mark-bg: #fbf3c6;
   --kbd-bg: #f2f4f6;
@@ -67,7 +68,7 @@
 
   /* 6. 行内代码 */
   --inline-code-bg: #f0f3f2;
-  --inline-code-color: #b8425e;
+  --inline-code-color: var(--color-accent-strong);  /* 比强调色稍深的绿，放进淡青引用/提示也看得清 */
   --inline-code-radius: .25rem;
 
   /* 7. 引用与提示栏。底色是半透明强调色：嵌套时自动叠加加深，无需逐级配色 */

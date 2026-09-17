@@ -9,16 +9,19 @@
   word-break: break-word;
 }
 #write a:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
 }
 
 #write strong {
   font-weight: 600;
   color: var(--strong-color);
 }
-#write del {
+#write del,
+#write s,
+#write strike {
   color: var(--color-text-secondary);
+  text-decoration: line-through;              /* 删除线穿过文字正中 */
 }
 
 #write mark {

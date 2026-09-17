@@ -16,12 +16,12 @@
 }
 
 #write .md-toc-item a {
-  color: var(--color-text);
+  color: var(--link-color);
   border-bottom: none;
   text-decoration: none;
 }
 #write .md-toc-item a:hover {
-  color: var(--color-accent);
+  color: var(--link-hover);
 }
 
 #write .md-toc-item::before {
