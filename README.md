@@ -26,7 +26,17 @@ A calm, low-saturation teal theme for Typora.
 
 ![提示栏](samples/提示栏.png)
 
-## 安装
+## 指令安装（Windows）
+
+在 PowerShell 中运行：
+
+```powershell
+irm https://raw.githubusercontent.com/liuzl621/danya-typora-theme/main/install.ps1 | iex
+```
+
+脚本自动下载主题并放入 Typora 主题目录；重启 Typora，在「主题」里选 **danya** 。
+
+## 手动安装
 
 1. Typora → 偏好设置 → 外观 → 打开主题文件夹；
 2. 拷入 `danya.css`、`danya.user.css` 和 `danya/` 整个目录；
