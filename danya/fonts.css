@@ -12,6 +12,9 @@
   src: local("Times New Roman");
   size-adjust: 110%;
   font-display: swap;
+  /* 只覆盖西文/数字/标点：不写 unicode-range 时该 face 覆盖全部码位，中文会先命中它、
+     Times 无字形后走系统回退（落到华文中宋等），跳过栈里的 SimSun */
+  unicode-range: U+0000-00FF, U+2000-206F, U+2070-209F, U+2100-214F, U+2150-218F, U+2460-24FF;
 }
 
 /* 模板：中文字体（思源宋体）
