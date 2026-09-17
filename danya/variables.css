@@ -84,9 +84,13 @@
   --alert-caution: #cf3f45;   --alert-caution-bg: #fcedee;
 
   /* 8. 代码块 */
-  --fence-bg: rgba(46, 139, 116, .12);        /* 主题青绿淡底（改强调色时同步这行）；别加深，深底会吞选区色、压暗代码文字 */
+  --fence-bg: #e3efe9;                        /* 实心淡青绿卡面：不半透,边缘才清晰(换强调色时同步换同族浅色) */
   --fence-text: #33383d;
-  --fence-border: var(--color-border);
+  --fence-border: #bfd9cd;                    /* 外圈实心青绿描边 */
+  --fence-edge: #a8cec0;                      /* 底部加厚边：实心较深青绿,立体厚度 */
+  --fence-shadow: -.4rem .5rem .875rem rgba(46, 139, 116, .28),  /* 左下主影：左重右轻，浮起 */
+                  -.125rem .25rem .5rem rgba(31, 42, 40, .12),    /* 贴地接触影 */
+                  0 .625rem 1.25rem rgba(46, 139, 116, .16);      /* 环境影：收敛的悬浮 */
   --fence-radius: .625rem;
   --fence-padding: 1em 1.2em;
   --fence-font-size: .92em;

@@ -19,7 +19,10 @@ pre.md-fences {
   color: var(--fence-text);
   background: var(--fence-bg);
   border: .0625rem solid var(--fence-border);
+  border-bottom: .1875rem solid var(--fence-edge);    /* 底部加厚边：立体厚度，仿 kbd */
+  border-left: .1875rem solid var(--fence-edge);      /* 左侧加厚边：光从右上来的左阴影 */
   border-radius: var(--fence-radius);
+  box-shadow: var(--fence-shadow);                    /* 单一柔和浮影 */
   padding: var(--fence-padding);
   margin: 1.2em 0;
 }
@@ -114,7 +117,11 @@ pre.md-fences {
 }
 .CodeMirror-linenumber {
   color: var(--gutter-color);
+  text-align: left;                 /* 靠左：默认右对齐会把行号挤向代码、显得偏右 */
+  padding: 0 .5ch 0 0;              /* 右侧留半个数字宽：竖线落在"位数+半字宽"处，随位数自适应 */
+  min-width: 0;
 }
+.CodeMirror-lines { padding-left: 1ch; }   /* 竖线与顶格代码之间留一个数字宽 */
 
 .md-fences {
   overflow-x: auto;                           /* 长行横向滚动；想自动换行改 pre-wrap */
