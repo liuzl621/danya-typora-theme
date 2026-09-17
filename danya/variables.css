@@ -18,12 +18,13 @@
   --color-selection: rgba(46, 139, 116, .22);
 
   /* 2. 字体。论文规范：西文数字 Times、正文中文宋体、标题中文黑体。
-     这里只引用系统已装字体名，不打包字体文件，分发主题不涉及字体授权 */
+     这里只引用系统已装字体名，不打包字体文件，分发主题不涉及字体授权。
+     中英文族名并列：实测有 Windows 只以中文名注册(有"宋体"无"SimSun")，只写英文名会匹配失败落到系统默认 */
   --font-latin: "Danya Times", "Times New Roman";  /* Danya Times = fonts.css 里 local Times + size-adjust 的视觉补偿 */
-  --font-text: var(--font-latin), "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", serif;
-  --font-heading: var(--font-latin), "Noto Sans SC", "Source Han Sans SC", "SimHei", "Microsoft YaHei", sans-serif;
+  --font-text: var(--font-latin), "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", "宋体", "NSimSun", "新宋体", "STSong", "华文宋体", "Songti SC", serif;
+  --font-heading: var(--font-latin), "Noto Sans SC", "Source Han Sans SC", "SimHei", "黑体", "Microsoft YaHei", "微软雅黑", "PingFang SC", sans-serif;
   --font-code: "Maple Mono NF CN", "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
-  --font-math: "KaTeX_Main", "Times New Roman", "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+  --font-math: "KaTeX_Main", "Times New Roman", "Noto Serif SC", "Source Han Serif SC", "SimSun", "宋体", "Songti SC", serif;
 
   /* 3. 页面与间距。--print-size-base 只作用于导出 PDF：pt = px × 0.75 */
   --size-base: 16px;
